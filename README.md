@@ -383,3 +383,18 @@ Based on [the work of Thomas Sarlandie](https://github.com/sarfata/voodooprivacy
 [![Creative Commons License](https://i.creativecommons.org/l/by-sa/3.0/88x31.png)](http://creativecommons.org/licenses/by-sa/3.0/)   
 This work is licensed under the [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/)   
 Attribution required: please include my name in any derivative and let me know how you have improved it!
+
+## Meow
+```
+docker run \
+    --name ipsec-vpn-server \
+    --restart=always \
+    --env-file /etc/l2tpconf/vpn.env \
+    -v ikev2-vpn-data:/etc/ipsec.d \
+    -v /lib/modules:/lib/modules:ro \
+    -p 500:500/udp \
+    -p 4500:4500/udp \
+    -p 1701:1701/udp \
+    -d --privileged \
+    hwdsl2/ipsec-vpn-server
+```
